@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en-us"> 
+
+<head>
+  <meta charset="UTF-8">
+  <title>Bootstrap Demo</title>
+
+  <!-- Bring in our bootstrap stylesheet -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type= "text/css" href="{{ url_for('static',filename='styles/style.css') }}">
+</head>
+
+<body>
+  <!-- Creates the Overall Grid -->
+  <div class="container">
+    <!-- First Row -->
+    <div class="row">
+      <div class="jumbotron col-md-12">
+        <h1>Mission to Mars</h1>
+        <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+      </div>
+    </div>
+
+    <!-- Second Row -->
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Latest Mars News</h2>
+            <h3>{{portal_info.news_title}}</h3>
+            <p>{{portal_info.news_description}}</p>
+        </div>
+    </div>
+
+    <!-- Third row -->
+    <div class="row">
+      <!-- First of two columns -->
+      <div class="featured_image col-md-8">
+        <h2>Featured Mars Image</h2>
+        <img src="{{portal_info.featured_image_url}}" />
+      </div>
+
+      <!-- Second of two columns -->
+      <div class="col-md-4">
+        <div class="weather_box">
+            <h3>Current Weather on Mars</h3>
+            <p>{{portal_info.mars_weather}}</p>
+        </div>
+
+        <div class="facts_box">
+            <h3>Mars Facts</h3>
+            <!-- Output facts table -->
+            {{portal_info.mars_facts_table | safe}}
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+
+</html>
